@@ -1,0 +1,3 @@
+# DoIt
+
+A Symfony project.
