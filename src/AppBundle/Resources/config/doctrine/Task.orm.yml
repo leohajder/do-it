@@ -1,0 +1,20 @@
+AppBundle\Entity\Task:
+    type: entity
+    table: task
+    repositoryClass: AppBundle\Repository\TaskRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        content:
+            type: text
+        priority:
+            type: integer
+        created:
+            type: datetime
+        completed:
+            type: datetime
+    lifecycleCallbacks: {  }
