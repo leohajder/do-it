@@ -1,7 +1,7 @@
-AppBundle\Entity\List:
+AppBundle\Entity\TaskList:
     type: entity
-    table: list
-    repositoryClass: AppBundle\Repository\ListRepository
+    table: task_list
+    repositoryClass: %app.repository.task_list.class%
     id:
         id:
             type: integer
@@ -14,4 +14,8 @@ AppBundle\Entity\List:
             length: 255
         created:
             type: datetime
+    oneToMany:
+        tasks:
+            targetEntity: Task
+            mappedBy: list
     lifecycleCallbacks: {  }

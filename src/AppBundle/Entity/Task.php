@@ -3,7 +3,7 @@
 namespace AppBundle\Entity;
 
 use AppBundle\Entity\TaskInterface;
-use AppBundle\Entity\ListInterface;
+use AppBundle\Entity\TaskListInterface;
 
 /**
  * Task
@@ -18,10 +18,15 @@ class Task implements TaskInterface
     /**
      * @var string
      */
+    protected $title;
+
+    /**
+     * @var string
+     */
     protected $content;
 
     /**
-     * @var int
+     * @var string
      */
     protected $priority;
 
@@ -36,17 +41,42 @@ class Task implements TaskInterface
     protected $completed;
 
     /**
-     * @var ListInterface
+     * @var TaskListInterface
      */
     protected $list;
 
-
     /**
+     * Get id
+     *
      * @return int
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     *
+     * @return TaskInterface
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
     }
 
     /**
@@ -76,7 +106,7 @@ class Task implements TaskInterface
     /**
      * Set priority
      *
-     * @param integer $priority
+     * @param string $priority
      *
      * @return TaskInterface
      */
@@ -90,7 +120,7 @@ class Task implements TaskInterface
     /**
      * Get priority
      *
-     * @return int
+     * @return string
      */
     public function getPriority()
     {
@@ -146,9 +176,19 @@ class Task implements TaskInterface
     }
 
     /**
+     * Is completed
+     *
+     * @return boolean
+     */
+    public function isCompleted()
+    {
+        return $this->completed != null;
+    }
+
+    /**
      * Set list
      *
-     * @param ListInterface $list
+     * @param TaskListInterface $list
      *
      * @return TaskInterface
      */
@@ -162,7 +202,7 @@ class Task implements TaskInterface
     /**
      * Get list
      *
-     * @return ListInterface
+     * @return TaskListInterface
      */
     public function getList()
     {

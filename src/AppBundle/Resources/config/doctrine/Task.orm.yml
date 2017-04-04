@@ -1,7 +1,7 @@
 AppBundle\Entity\Task:
     type: entity
     table: task
-    repositoryClass: AppBundle\Repository\TaskRepository
+    repositoryClass: %app.repository.task.class%
     id:
         id:
             type: integer
@@ -9,12 +9,26 @@ AppBundle\Entity\Task:
             generator:
                 strategy: AUTO
     fields:
+        title:
+            type: string
+            length: 255
         content:
             type: text
         priority:
-            type: integer
+            type: string
+            length: 255
+            nullable: true
         created:
             type: datetime
         completed:
             type: datetime
+            nullable: true
+    manyToOne:
+        list:
+            targetEntity: TaskList
+            inversedBy: tasks
+            joinColumn:
+                name: list_id
+                referencedColumnName: id
+                onDelete: CASCADE
     lifecycleCallbacks: {  }

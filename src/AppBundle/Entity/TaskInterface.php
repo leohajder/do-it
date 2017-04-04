@@ -2,11 +2,8 @@
 
 namespace AppBundle\Entity;
 
-use AppBundle\Entity\ListInterface;
+use AppBundle\Entity\TaskListInterface;
 
-/**
- * TaskInterface
- */
 interface TaskInterface
 {
     /**
@@ -15,6 +12,22 @@ interface TaskInterface
      * @return int
      */
     public function getId();
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     *
+     * @return TaskInterface
+     */
+    public function setTitle($title);
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle();
 
     /**
      * Set content
@@ -35,7 +48,7 @@ interface TaskInterface
     /**
      * Set priority
      *
-     * @param integer $priority
+     * @param string $priority
      *
      * @return TaskInterface
      */
@@ -44,7 +57,7 @@ interface TaskInterface
     /**
      * Get priority
      *
-     * @return int
+     * @return string
      */
     public function getPriority();
 
@@ -81,9 +94,16 @@ interface TaskInterface
     public function getCompleted();
 
     /**
+     * Is completed
+     *
+     * @return boolean
+     */
+    public function isCompleted();
+
+    /**
      * Set list
      *
-     * @param ListInterface $list
+     * @param TaskListInterface $list
      *
      * @return TaskInterface
      */
@@ -92,7 +112,7 @@ interface TaskInterface
     /**
      * Get list
      *
-     * @return ListInterface
+     * @return TaskListInterface
      */
     public function getList();
 }
