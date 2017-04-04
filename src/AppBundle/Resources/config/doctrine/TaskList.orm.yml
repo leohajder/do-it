@@ -18,4 +18,13 @@ AppBundle\Entity\TaskList:
         tasks:
             targetEntity: Task
             mappedBy: list
+            orphanRemoval: true
+    manyToOne:
+        user:
+            targetEntity: User
+            inversedBy: lists
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
+                onDelete: CASCADE
     lifecycleCallbacks: {  }

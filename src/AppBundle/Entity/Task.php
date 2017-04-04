@@ -192,9 +192,9 @@ class Task implements TaskInterface
      *
      * @return TaskInterface
      */
-    public function setList($list)
+    public function setList(TaskListInterface $list)
     {
-        $this->list = $list;
+        $this->taskList = $taskList;
 
         return $this;
     }

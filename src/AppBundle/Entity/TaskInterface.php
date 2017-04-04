@@ -107,7 +107,7 @@ interface TaskInterface
      *
      * @return TaskInterface
      */
-    public function setList($list);
+    public function setlist(TaskListInterface $list);
 
     /**
      * Get list

@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Entity\UserInterface;
 use AppBundle\Entity\TaskInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -88,4 +89,20 @@ interface TaskListInterface
      * @return boolean
      */
     public function hasTask(TaskInterface $task);
+
+    /**
+     * Set user
+     *
+     * @param UserInterface $user
+     *
+     * @return TaskListInterface
+     */
+    public function setUser(UserInterface $user);
+
+    /**
+     * Get user
+     *
+     * @return UserInterface
+     */
+    public function getUser();
 }

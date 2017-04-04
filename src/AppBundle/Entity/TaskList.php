@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use AppBundle\Entity\TaskInterface;
+use AppBundle\Entity\UserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -13,22 +14,27 @@ class TaskList implements TaskListInterface
     /**
      * @var int
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      */
-    private $name;
+    protected $name;
 
     /**
      * @var \DateTime
      */
-    private $created;
+    protected $created;
 
     /**
      * @var TaskInterface[]
      */
-    private $tasks;
+    protected $tasks;
+
+    /**
+     * @var UserInterface
+     */
+    protected $user;
 
     /**
      * Get id
@@ -155,6 +161,31 @@ class TaskList implements TaskListInterface
     {
         return $this->tasks->contains($task);
     }
+
+    /**
+     * Set user
+     *
+     * @param UserInterface $user
+     *
+     * @return TaskListInterface
+     */
+    public function setUser(UserInterface $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return UserInterface
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
 
     /**
      * TaskList constructor
