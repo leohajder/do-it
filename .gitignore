@@ -48,3 +48,6 @@
 */Entity/*~
 
 .php_cs.cache
+
+# PhpStorm
+.idea/*

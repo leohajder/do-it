@@ -1,0 +1,22 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container inverse">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{ path('app_index') }}">Leo Hajder | <strong>DO</strong><em>it</em></a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="{{ path('fos_user_registration_register') }}">{{ 'main_navigation.register'|trans }}</a></li>
+                <li><a href="{{ path('fos_user_security_login') }}">{{ 'main_navigation.login'|trans }}</a></li>
+                <li><a href="{{ path('fos_user_profile_show') }}">{{ 'main_navigation.profile'|trans }}</a></li>
+                <li><a href="{{ path('fos_user_security_logout') }}">{{ 'main_navigation.logout'|trans }}</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<br><br><br>
