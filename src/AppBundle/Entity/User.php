@@ -4,7 +4,6 @@ namespace AppBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\Common\Collections\ArrayCollection;
-use AppBundle\Entity\TaskInterface;
 
 /**
  * User
@@ -12,49 +11,42 @@ use AppBundle\Entity\TaskInterface;
 class User extends BaseUser implements UserInterface
 {
     /**
-     * @var int
+     * @var integer
      */
     protected $id;
 
     /**
-     * @var TaskListInterface[]
+     * @var ArrayCollection
      */
     protected $lists;
 
     /**
-     * Set lists
-     *
-     * @param ArrayCollection $lists
-     *
-     * @return UserInterface
+     * Constructor
      */
-    public function setLists(ArrayCollection $lists)
+    public function __construct()
     {
-        $this->lists = $lists;
-
-        return $this;
+        parent::__construct();
+        $this->lists = new ArrayCollection();
     }
 
     /**
-     * Get lists
+     * Get id
      *
-     * @return TaskListInterface[]
+     * @return integer
      */
-    public function getLists()
+    public function getId()
     {
-        return $this->lists;
+        return $this->id;
     }
 
     /**
-     * Add list
-     *
      * @param TaskListInterface $list
      *
      * @return UserInterface
      */
-    public function addlist(TaskListInterface $list)
+    public function addList(TaskListInterface $list)
     {
-        if (false === $this->haslist($list)) {
+        if (false === $this->hasList($list)) {
             $this->lists->add($list);
         }
 
@@ -68,21 +60,19 @@ class User extends BaseUser implements UserInterface
      *
      * @return UserInterface
      */
-    public function removelist(TaskListInterface $list)
+    public function removeList(TaskListInterface $list)
     {
-        if ($this->haslist($list)) {
-            $this->lists->remove($list);
+        if ($this->hasList($list)) {
+            $this->lists->removeElement($list);
         }
 
         return $this;
     }
 
     /**
-     * Has list
+     * @param TaskListInterface $list
      *
-     * @param  TaskListInterface $list
-     *
-     * @return boolean
+     * @return bool
      */
     public function hasList(TaskListInterface $list)
     {
@@ -90,11 +80,11 @@ class User extends BaseUser implements UserInterface
     }
 
     /**
-     * User constructor
+     * @return ArrayCollection
      */
-    public function __construct()
+    public function getLists()
     {
-        parent::__construct();
-        $this->lists = new ArrayCollection();
+        return $this->lists;
     }
 }
+

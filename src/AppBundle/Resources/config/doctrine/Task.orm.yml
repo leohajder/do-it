@@ -1,7 +1,7 @@
 AppBundle\Entity\Task:
     type: entity
     table: task
-    repositoryClass: %app.repository.task.class%
+    repositoryClass: AppBundle\Repository\TaskRepository
     id:
         id:
             type: integer
@@ -17,6 +17,9 @@ AppBundle\Entity\Task:
         priority:
             type: string
             length: 255
+            nullable: true
+        dueDate:
+            type: datetime
             nullable: true
         created:
             type: datetime

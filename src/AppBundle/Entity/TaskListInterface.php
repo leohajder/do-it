@@ -2,16 +2,17 @@
 
 namespace AppBundle\Entity;
 
-use AppBundle\Entity\UserInterface;
-use AppBundle\Entity\TaskInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 
+/**
+ * TaskListInterface
+ */
 interface TaskListInterface
 {
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId();
 
@@ -38,7 +39,7 @@ interface TaskListInterface
      *
      * @return TaskListInterface
      */
-    public function setCreated(\DateTime $created);
+    public function setCreated($created);
 
     /**
      * Get created
@@ -46,22 +47,6 @@ interface TaskListInterface
      * @return \DateTime
      */
     public function getCreated();
-
-    /**
-     * Set tasks
-     *
-     * @param ArrayCollection $tasks
-     *
-     * @return TaskListInterface
-     */
-    public function setTasks(ArrayCollection $tasks);
-
-    /**
-     * Get tasks
-     *
-     * @return TaskInterface[]
-     */
-    public function getTasks();
 
     /**
      * Add task
@@ -82,13 +67,18 @@ interface TaskListInterface
     public function removeTask(TaskInterface $task);
 
     /**
-     * Has task
+     * @param TaskInterface $task
      *
-     * @param  TaskInterface $task
-     *
-     * @return boolean
+     * @return bool
      */
     public function hasTask(TaskInterface $task);
+
+    /**
+     * Get tasks
+     *
+     * @return ArrayCollection
+     */
+    public function getTasks();
 
     /**
      * Set user
@@ -97,7 +87,7 @@ interface TaskListInterface
      *
      * @return TaskListInterface
      */
-    public function setUser(UserInterface $user);
+    public function setUser(UserInterface $user = null);
 
     /**
      * Get user

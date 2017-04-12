@@ -2,8 +2,6 @@
 
 namespace AppBundle\Entity;
 
-use AppBundle\Entity\TaskInterface;
-use AppBundle\Entity\UserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -12,34 +10,42 @@ use Doctrine\Common\Collections\ArrayCollection;
 class TaskList implements TaskListInterface
 {
     /**
-     * @var int
+     * @var integer
      */
-    protected $id;
+    private $id;
 
     /**
      * @var string
      */
-    protected $name;
+    private $name;
 
     /**
      * @var \DateTime
      */
-    protected $created;
+    private $created;
 
     /**
-     * @var TaskInterface[]
+     * @var ArrayCollection
      */
-    protected $tasks;
+    private $tasks;
 
     /**
      * @var UserInterface
      */
-    protected $user;
+    private $user;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->tasks = new ArrayCollection();
+    }
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -77,7 +83,7 @@ class TaskList implements TaskListInterface
      *
      * @return TaskListInterface
      */
-    public function setCreated(\DateTime $created)
+    public function setCreated($created)
     {
         $this->created = $created;
 
@@ -92,30 +98,6 @@ class TaskList implements TaskListInterface
     public function getCreated()
     {
         return $this->created;
-    }
-
-    /**
-     * Set tasks
-     *
-     * @param ArrayCollection $tasks
-     *
-     * @return TaskListInterface
-     */
-    public function setTasks(ArrayCollection $tasks)
-    {
-        $this->tasks = $tasks;
-
-        return $this;
-    }
-
-    /**
-     * Get tasks
-     *
-     * @return TaskInterface[]
-     */
-    public function getTasks()
-    {
-        return $this->tasks;
     }
 
     /**
@@ -144,22 +126,30 @@ class TaskList implements TaskListInterface
     public function removeTask(TaskInterface $task)
     {
         if ($this->hasTask($task)) {
-            $this->tasks->remove($task);
+            $this->tasks->removeElement($task);
         }
 
         return $this;
     }
 
     /**
-     * Has task
+     * @param TaskInterface $task
      *
-     * @param  TaskInterface $task
-     *
-     * @return boolean
+     * @return bool
      */
     public function hasTask(TaskInterface $task)
     {
         return $this->tasks->contains($task);
+    }
+
+    /**
+     * Get tasks
+     *
+     * @return ArrayCollection
+     */
+    public function getTasks()
+    {
+        return $this->tasks;
     }
 
     /**
@@ -169,7 +159,7 @@ class TaskList implements TaskListInterface
      *
      * @return TaskListInterface
      */
-    public function setUser(UserInterface $user)
+    public function setUser(UserInterface $user = null)
     {
         $this->user = $user;
 
@@ -185,13 +175,5 @@ class TaskList implements TaskListInterface
     {
         return $this->user;
     }
-
-
-    /**
-     * TaskList constructor
-     */
-    public function __construct()
-    {
-        $this->tasks = new ArrayCollection();
-    }
 }
+

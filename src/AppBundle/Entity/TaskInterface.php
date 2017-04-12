@@ -2,14 +2,15 @@
 
 namespace AppBundle\Entity;
 
-use AppBundle\Entity\TaskListInterface;
-
+/**
+ * TaskInterface
+ */
 interface TaskInterface
 {
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId();
 
@@ -62,6 +63,22 @@ interface TaskInterface
     public function getPriority();
 
     /**
+     * Set dueDate
+     *
+     * @param \DateTime $dueDate
+     *
+     * @return TaskInterface
+     */
+    public function setDueDate($dueDate);
+
+    /**
+     * Get dueDate
+     *
+     * @return \DateTime
+     */
+    public function getDueDate();
+
+    /**
      * Set created
      *
      * @param \DateTime $created
@@ -94,20 +111,13 @@ interface TaskInterface
     public function getCompleted();
 
     /**
-     * Is completed
-     *
-     * @return boolean
-     */
-    public function isCompleted();
-
-    /**
      * Set list
      *
      * @param TaskListInterface $list
      *
      * @return TaskInterface
      */
-    public function setlist(TaskListInterface $list);
+    public function setList(TaskListInterface $list = null);
 
     /**
      * Get list

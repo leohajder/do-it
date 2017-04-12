@@ -2,53 +2,56 @@
 
 namespace AppBundle\Entity;
 
-use AppBundle\Entity\TaskInterface;
-use AppBundle\Entity\TaskListInterface;
-
 /**
  * Task
  */
 class Task implements TaskInterface
 {
     /**
-     * @var int
+     * @var integer
      */
-    protected $id;
+    private $id;
 
     /**
      * @var string
      */
-    protected $title;
+    private $title;
 
     /**
      * @var string
      */
-    protected $content;
+    private $content;
 
     /**
      * @var string
      */
-    protected $priority;
+    private $priority;
 
     /**
      * @var \DateTime
      */
-    protected $created;
+    private $dueDate;
 
     /**
      * @var \DateTime
      */
-    protected $completed;
+    private $created;
+
+    /**
+     * @var \DateTime
+     */
+    private $completed;
 
     /**
      * @var TaskListInterface
      */
-    protected $list;
+    private $list;
+
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -128,6 +131,30 @@ class Task implements TaskInterface
     }
 
     /**
+     * Set dueDate
+     *
+     * @param \DateTime $dueDate
+     *
+     * @return TaskInterface
+     */
+    public function setDueDate($dueDate)
+    {
+        $this->dueDate = $dueDate;
+
+        return $this;
+    }
+
+    /**
+     * Get dueDate
+     *
+     * @return \DateTime
+     */
+    public function getDueDate()
+    {
+        return $this->dueDate;
+    }
+
+    /**
      * Set created
      *
      * @param \DateTime $created
@@ -176,25 +203,15 @@ class Task implements TaskInterface
     }
 
     /**
-     * Is completed
-     *
-     * @return boolean
-     */
-    public function isCompleted()
-    {
-        return $this->completed != null;
-    }
-
-    /**
      * Set list
      *
      * @param TaskListInterface $list
      *
-     * @return TaskInterface
+     * @return Task
      */
-    public function setList(TaskListInterface $list)
+    public function setList(TaskListInterface $list = null)
     {
-        $this->taskList = $taskList;
+        $this->list = $list;
 
         return $this;
     }
@@ -209,3 +226,4 @@ class Task implements TaskInterface
         return $this->list;
     }
 }
+

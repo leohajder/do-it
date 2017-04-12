@@ -3,51 +3,44 @@
 namespace AppBundle\Entity;
 
 use FOS\UserBundle\Model\UserInterface as BaseUserInterface;
-use AppBundle\Entity\TaskListInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 
+
+/**
+ * UserInterface
+ */
 interface UserInterface extends BaseUserInterface
 {
     /**
-     * Set lists
+     * Get id
      *
-     * @param ArrayCollection $lists
-     *
-     * @return UserInterface
+     * @return integer
      */
-    public function setLists(ArrayCollection $lists);
+    public function getId();
 
     /**
-     * Get lists
-     *
-     * @return TaskListInterface[]
-     */
-    public function getlists();
-
-    /**
-     * Add list
-     *
      * @param TaskListInterface $list
      *
      * @return UserInterface
      */
-    public function addlist(TaskListInterface $list);
+    public function addList(TaskListInterface $list);
 
     /**
      * Remove list
      *
      * @param TaskListInterface $list
-     *
-     * @return UserInterface
      */
-    public function removelist(TaskListInterface $list);
+    public function removeList(TaskListInterface $list);
 
     /**
-     * Has list
+     * @param TaskListInterface $list
      *
-     * @param  TaskListInterface $list
-     *
-     * @return boolean
+     * @return bool
      */
     public function hasList(TaskListInterface $list);
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getLists();
 }
