@@ -2,3 +2,11 @@ app_index:
     path: /
     defaults:
         _controller: AppBundle:Default:index
+
+app_list:
+    resource: "@AppBundle/Resources/config/routing/tasklist.yml"
+    prefix:   /list
+
+app_task:
+    resource: "@AppBundle/Resources/config/routing/task.yml"
+    prefix:   /task
