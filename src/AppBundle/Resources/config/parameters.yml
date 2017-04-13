@@ -3,3 +3,5 @@ parameters:
     app.entity.task.class: AppBundle\Entity\Task
     app.factory.class: AppBundle\Factory\Factory
     app.repository.class: Doctrine\ORM\EntityRepository
+    app.form.type.task_list.class: AppBundle\Form\TaskListType
+    app.form.type.task.class: AppBundle\Form\TaskType

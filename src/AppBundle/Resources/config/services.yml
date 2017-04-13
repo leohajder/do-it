@@ -20,3 +20,17 @@ services:
         factory: ['@doctrine.orm.default_entity_manager', getRepository]
         arguments:
             - '%app.entity.task.class%'
+
+    app.form.type.task_list:
+        class: '%app.form.type.task_list.class%'
+        arguments:
+            - '%app.entity.task_list.class%'
+        tags:
+            - { name: form.type }
+
+    app.form.type.task:
+        class: '%app.form.type.task.class%'
+        arguments:
+            - '%app.entity.task.class%'
+        tags:
+            - { name: form.type }

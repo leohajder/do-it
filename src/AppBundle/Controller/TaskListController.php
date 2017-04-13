@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Form\TaskListType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -40,11 +41,11 @@ class TaskListController extends Controller
     {
         /** @var TaskListInterface $taskList */
         $taskList = $this->get('app.factory.task_list')->createNew();
-        $form = $this->createForm('AppBundle\Form\TaskListType', $taskList);
+        $form = $this->createForm(TaskListType::class, $taskList);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->get('app.repository.task_list')->add($taskList);
+            $taskList->setCreated(new \DateTime());
             $em = $this->getDoctrine()->getManager();
             $em->persist($taskList);
             $em->flush();
@@ -88,7 +89,7 @@ class TaskListController extends Controller
     public function editAction(Request $request, TaskList $taskList)
     {
         $deleteForm = $this->createDeleteForm($taskList);
-        $editForm = $this->createForm('AppBundle\Form\TaskListType', $taskList);
+        $editForm = $this->createForm(TaskListType::class, $taskList);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
