@@ -1,3 +1,5 @@
 parameters:
-    app.repository.task_list.class: AppBundle\Repository\TaskListRepository
-    app.repository.task.class: AppBundle\AppBundle\Repository\TaskRepository
+    app.entity.task_list.class: AppBundle\Entity\TaskList
+    app.entity.task.class: AppBundle\Entity\Task
+    app.factory.class: AppBundle\Factory\Factory
+    app.repository.class: Doctrine\ORM\EntityRepository

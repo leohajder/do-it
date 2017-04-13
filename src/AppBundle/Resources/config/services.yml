@@ -1,1 +1,22 @@
 services:
+    app.factory.task_list:
+        class: '%app.factory.class%'
+        arguments:
+            - '%app.entity.task_list.class%'
+
+    app.repository.task_list:
+        class: '%app.repository.class%'
+        factory: ['@doctrine.orm.default_entity_manager', getRepository]
+        arguments:
+            - '%app.entity.task_list.class%'
+
+    app.factory.task:
+        class: '%app.factory.class%'
+        arguments:
+            - '%app.entity.task.class%'
+
+    app.repository.task:
+        class: '%app.repository.class%'
+        factory: ['@doctrine.orm.default_entity_manager', getRepository]
+        arguments:
+            - '%app.entity.task.class%'

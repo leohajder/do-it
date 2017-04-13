@@ -1,7 +1,6 @@
 AppBundle\Entity\TaskList:
     type: entity
     table: task_list
-    repositoryClass: AppBundle\Repository\TaskListRepository
     id:
         id:
             type: integer

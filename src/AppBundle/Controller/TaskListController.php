@@ -2,9 +2,12 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\TaskList;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use AppBundle\Entity\TaskList;
+use AppBundle\Entity\TaskListInterface;
 
 /**
  * Tasklist controller.
@@ -13,56 +16,74 @@ class TaskListController extends Controller
 {
     /**
      * Lists all taskList entities.
+     *
+     * @return Response
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
+        /** @var TaskListInterface $taskLists */
+        $taskLists = $this->get('app.repository.task_list')->findAll();
 
-        $taskLists = $em->getRepository('AppBundle:TaskList')->findAll();
-
-        return $this->render('AppBundle:tasklist:index.html.twig', array(
+        return $this->render('AppBundle:tasklist:index.html.twig', [
             'taskLists' => $taskLists,
-        ));
+        ]);
     }
 
     /**
      * Creates a new taskList entity.
+     *
+     * @param Request $request
+     *
+     * @return Response
      */
     public function newAction(Request $request)
     {
-        $taskList = new Tasklist();
+        /** @var TaskListInterface $taskList */
+        $taskList = $this->get('app.factory.task_list')->createNew();
         $form = $this->createForm('AppBundle\Form\TaskListType', $taskList);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $this->get('app.repository.task_list')->add($taskList);
             $em = $this->getDoctrine()->getManager();
             $em->persist($taskList);
-            $em->flush($taskList);
+            $em->flush();
 
-            return $this->redirectToRoute('list_show', array('id' => $taskList->getId()));
+            return $this->redirectToRoute('list_show', [
+                'id' => $taskList->getId(),
+                ]);
         }
 
-        return $this->render('AppBundle:tasklist:new.html.twig', array(
+        return $this->render('AppBundle:tasklist:new.html.twig', [
             'taskList' => $taskList,
-            'form' => $form->createView(),
-        ));
+            'form'     => $form->createView(),
+        ]);
     }
 
     /**
      * Finds and displays a taskList entity.
+     *
+     * @param TaskList $taskList
+     *
+     * @return Response
      */
     public function showAction(TaskList $taskList)
     {
         $deleteForm = $this->createDeleteForm($taskList);
 
-        return $this->render('AppBundle:tasklist:show.html.twig', array(
-            'taskList' => $taskList,
+        return $this->render('AppBundle:tasklist:show.html.twig', [
+            'taskList'    => $taskList,
             'delete_form' => $deleteForm->createView(),
-        ));
+        ]);
     }
 
     /**
      * Displays a form to edit an existing taskList entity.
+     *
+     * @param Request $request
+     * @param TaskList $taskList
+     *
+     * @return Response
      */
     public function editAction(Request $request, TaskList $taskList)
     {
@@ -73,18 +94,25 @@ class TaskListController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('list_edit', array('id' => $taskList->getId()));
+            return $this->redirectToRoute('list_show', [
+                'id' => $taskList->getId(),
+            ]);
         }
 
-        return $this->render('AppBundle:tasklist:edit.html.twig', array(
-            'taskList' => $taskList,
-            'edit_form' => $editForm->createView(),
+        return $this->render('AppBundle:tasklist:edit.html.twig', [
+            'taskList'    => $taskList,
+            'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        ));
+        ]);
     }
 
     /**
      * Deletes a taskList entity.
+     *
+     * @param Request $request
+     * @param TaskList $taskList
+     *
+     * @return Response
      */
     public function deleteAction(Request $request, TaskList $taskList)
     {
@@ -105,12 +133,14 @@ class TaskListController extends Controller
      *
      * @param TaskList $taskList The taskList entity
      *
-     * @return \Symfony\Component\Form\Form The form
+     * @return FormInterface The form
      */
     private function createDeleteForm(TaskList $taskList)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('list_delete', array('id' => $taskList->getId())))
+            ->setAction($this->generateUrl('list_delete', [
+                'id' => $taskList->getId(),
+            ]))
             ->setMethod('DELETE')
             ->getForm()
         ;
