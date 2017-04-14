@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\UserInterface;
 use AppBundle\Form\TaskListType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\FormInterface;
@@ -45,7 +46,9 @@ class TaskListController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $taskList->setCreated(new \DateTime());
+            $taskList
+                ->setUser($this->getUser())
+                ->setCreated(new \DateTime());
             $em = $this->getDoctrine()->getManager();
             $em->persist($taskList);
             $em->flush();
