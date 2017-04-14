@@ -24,7 +24,9 @@ class TaskListController extends Controller
     public function indexAction()
     {
         /** @var TaskListInterface $taskLists */
-        $taskLists = $this->get('app.repository.task_list')->findAll();
+        $taskLists = $this->get('app.repository.task_list')->findBy([
+            'user' => $this->getUser()
+        ]);
 
         return $this->render('AppBundle:tasklist:index.html.twig', [
             'taskLists' => $taskLists,
