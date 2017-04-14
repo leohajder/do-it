@@ -32,5 +32,8 @@ services:
         class: '%app.form.type.task.class%'
         arguments:
             - '%app.entity.task.class%'
+            - '%app.entity.task_list.class%'
+            - '@app.repository.task_list'
+            - '@security.token_storage'
         tags:
             - { name: form.type }

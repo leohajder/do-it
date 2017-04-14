@@ -6,11 +6,25 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use AppBundle\Entity\TaskList;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
 class TaskListType extends AbstractType
 {
+    /**
+     * @var string $dataClass
+     */
+    protected $dataClass;
+
+    /**
+     * TaskListType constructor.
+     *
+     * @param string $dataClass
+     */
+    public function __construct($dataClass)
+    {
+        $this->dataClass = $dataClass;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -33,7 +47,7 @@ class TaskListType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => TaskList::class,
+            'data_class' => $this->dataClass,
         ]);
     }
 
