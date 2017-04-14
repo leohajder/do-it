@@ -33,6 +33,10 @@
                 <th>Completed</th>
                 <td>{% if task.completed %}{{ task.completed|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
+            <tr>
+                <th>List</th>
+                <td>{{ task.list.name }}</td>
+            </tr>
         </tbody>
     </table>
 

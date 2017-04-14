@@ -6,3 +6,4 @@ form:
         content: 'Content'
         priority: 'Priority'
         due_date: 'Due date'
+        list: 'List'

@@ -11,6 +11,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\DateTime;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Valid;
 
 class TaskType extends AbstractType
 {
@@ -25,14 +26,14 @@ class TaskType extends AbstractType
                 'required'    => true,
                 'constraints' => [
                     new NotBlank(),
-                ]
+                ],
             ])
             ->add('content', TextareaType::class, [
                 'label'       => 'form.task.content',
                 'required'    => true,
                 'constraints' => [
                     new NotBlank(),
-                ]
+                ],
             ])
             ->add('priority', TextType::class, [
                 'label'       => 'form.task.priority',
@@ -43,7 +44,13 @@ class TaskType extends AbstractType
                 'required'    => false,
                 'constraints' => [
                     new DateTime(),
-                ]
+                ],
+            ])
+            ->add('list', TaskListType::class, [
+                'label'       => 'form.task.list',
+                'constraints' => [
+                    new Valid(),
+                ],
             ])
         ;
     }

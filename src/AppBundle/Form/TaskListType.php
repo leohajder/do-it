@@ -22,7 +22,7 @@ class TaskListType extends AbstractType
                 'required' => true,
                 'constraints' => [
                     new NotBlank(),
-                ]
+                ],
             ])
         ;
     }
