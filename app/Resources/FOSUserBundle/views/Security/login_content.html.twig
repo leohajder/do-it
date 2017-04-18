@@ -27,10 +27,10 @@
         </div>
         <div class="form-group">
             <div class="col-lg-10 col-lg-offset-2">
-                <button type="submit" id="_submit" name="_submit" class="btn btn-primary">{{ 'security.login.submit'|trans }}</button>
+                <button type="submit" id="_submit" name="_submit" class="btn btn-success">{{ 'security.login.submit'|trans }}</button>
+                <a href="{{ path('fos_user_registration_register') }}" class="btn btn-primary">{{ 'registration.submit'|trans }}</a>
                 <a href="{{ path('fos_user_resetting_request') }}" class="btn btn-danger">{{ 'resetting.request.submit'|trans }}</a>
             </div>
         </div>
     </fieldset>
 </form>
-

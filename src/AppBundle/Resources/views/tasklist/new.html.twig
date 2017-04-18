@@ -1,16 +1,21 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Tasklist creation</h1>
-
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+    {{ form_start(form, { 'attr': {'class': 'form-horizontal', 'novalidate': 'novalidate'}}) }}
+    <fieldset>
+        <legend>{{ 'form.task_list.legend.new'|trans }}</legend>
+        <div class="form-group">
+            <div class="col-sm-12 text-danger">{{ form_errors(form.name) }}</div>
+            <label class="col-lg-2 control-label">{{ form_label(form.name) }}</label>
+            <div class="col-lg-10">
+                {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-lg-10 col-lg-offset-2">
+                <button type="submit" class="btn btn-primary">{{ 'action.create'|trans }}</button>
+            </div>
+        </div>
+    </fieldset>
     {{ form_end(form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('list_index') }}">Back to the list</a>
-        </li>
-    </ul>
 {% endblock %}

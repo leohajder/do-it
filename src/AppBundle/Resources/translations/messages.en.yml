@@ -1,9 +1,42 @@
 form:
     task_list:
         name: 'Name'
+        legend:
+            new: 'New list'
+            edit: 'Edit list'
+            delete: 'Delete list'
+            lists: 'Lists'
     task:
         title: 'Title'
         content: 'Content'
         priority: 'Priority'
         due_date: 'Due date'
         list: 'List'
+        legend:
+            new: 'New task'
+            edit: 'Edit task'
+            delete: 'Delete task'
+            tasks: 'Tasks'
+
+action:
+    create: 'Create'
+    edit: 'Edit'
+    update: 'Update'
+    delete: 'Delete'
+    show: 'Show'
+
+flash:
+    task_list:
+        create:
+            success: 'Your list was created successfully.'
+        update:
+            success: 'Your list was updated successfully.'
+        delete:
+            success: 'Your list was deleted successfully.'
+    task:
+        create:
+            success: 'Your task was created successfully.'
+        update:
+            success: 'Your task was updated successfully.'
+        delete:
+            success: 'Your task was deleted successfully.'

@@ -2,23 +2,19 @@
 
 namespace AppBundle\Form;
 
-use AppBundle\Entity\Task;
-use AppBundle\Entity\TaskList;
 use AppBundle\Entity\TaskListInterface;
 use AppBundle\Entity\UserInterface;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Validator\Constraints\DateTime;
 use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Validator\Constraints\Valid;
 
 class TaskType extends AbstractType
 {
@@ -28,9 +24,9 @@ class TaskType extends AbstractType
     protected $dataClass;
 
     /**
-     * @var string $choiceClass
+     * @var string $taskListClass
      */
-    protected $choiceClass;
+    protected $taskListClass;
 
     /**
      * @var EntityRepository $taskListRepository
@@ -46,18 +42,18 @@ class TaskType extends AbstractType
      * TaskType constructor.
      *
      * @param string $dataClass
-     * @param string $choiceClass
+     * @param string $taskListClass
      * @param EntityRepository $taskListRepository
      * @param TokenStorageInterface $tokenStorage
      */
     public function __construct(
         $dataClass,
-        $choiceClass,
+        $taskListClass,
         EntityRepository $taskListRepository,
         TokenStorageInterface $tokenStorage
     ) {
         $this->dataClass = $dataClass;
-        $this->choiceClass = $choiceClass;
+        $this->taskListClass = $taskListClass;
         $this->taskListRepository = $taskListRepository;
         $this->tokenStorage = $tokenStorage;
     }
@@ -86,8 +82,9 @@ class TaskType extends AbstractType
                 'label'       => 'form.task.priority',
                 'required'    => false,
             ])
-            ->add('dueDate', DateTimeType::class, [
+            ->add('dueDate', DateType::class, [
                 'label'       => 'form.task.due_date',
+                'widget'      => 'single_text',
                 'required'    => false,
                 'constraints' => [
                     new DateTime(),
@@ -95,7 +92,8 @@ class TaskType extends AbstractType
             ])
             ->add('list', EntityType::class, [
                 'label'       => 'form.task.list',
-                'class'     => $this->choiceClass,
+                'class'       => $this->taskListClass,
+                'choices'     => $options['taskLists'],
                 'choice_label' => function(TaskListInterface $taskList) {
                     return $taskList->getName();
                 },
@@ -104,6 +102,7 @@ class TaskType extends AbstractType
                 ],
             ])
         ;
+
     }
 
     /**

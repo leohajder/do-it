@@ -1,39 +1,32 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Tasklists list</h1>
+    <h1>{{ 'form.task_list.legend.lists'|trans }}</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Created</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for taskList in taskLists %}
-            <tr>
-                <td>{{ taskList.name }}</td>
-                <td>{% if taskList.created %}{{ taskList.created|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('list_show', { 'id': taskList.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('list_edit', { 'id': taskList.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <a href="{{ path('list_new') }}" class="btn btn-success">{{ 'form.task_list.legend.new'|trans }}</a>
 
-    <ul>
-        <li>
-            <a href="{{ path('list_new') }}">Create a new taskList</a>
-        </li>
-    </ul>
+    {% if taskLists is not empty %}
+        <br><br>
+
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>{{ 'form.task_list.name'|trans }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for taskList in taskLists %}
+                    <tr>
+                        <td>{{ taskList.name }}</td>
+                        <td>
+                            <a href="{{ path('list_show', { 'id': taskList.id }) }}" class="btn btn-link text-info">{{ 'action.show'|trans }}</a>
+                        </td>
+                        <td>
+                            <a href="{{ path('list_edit', { 'id': taskList.id }) }}" class="btn btn-link text-primary">{{ 'action.edit'|trans }}</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
 {% endblock %}

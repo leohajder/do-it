@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Task;
 use AppBundle\Entity\TaskInterface;
+use AppBundle\Entity\TaskListInterface;
 
 /**
  * Task controller.
@@ -49,6 +50,8 @@ class TaskController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($task);
             $em->flush();
+
+            $this->addFlash('success', 'flash.task.create.success');
 
             return $this->redirectToRoute('task_show', [
                 'id' => $task->getId(),
@@ -95,16 +98,18 @@ class TaskController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash('success','flash.task.update.success');
+
             return $this->redirectToRoute('task_show', [
                 'id' => $task->getId(),
             ]);
         }
 
-        return $this->render('AppBundle:task:edit.html.twig', array(
+        return $this->render('AppBundle:task:edit.html.twig', [
             'task'        => $task,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        ));
+        ]);
     }
 
     /**
@@ -117,6 +122,9 @@ class TaskController extends Controller
      */
     public function deleteAction(Request $request, Task $task)
     {
+        /** @var TaskListInterface $taskList */
+        $taskList = $task->getList();
+
         $form = $this->createDeleteForm($task);
         $form->handleRequest($request);
 
@@ -124,9 +132,13 @@ class TaskController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($task);
             $em->flush();
+
+            $this->addFlash('success','flash.task.delete.success');
         }
 
-        return $this->redirectToRoute('task_index');
+        return $this->redirectToRoute('list_show', [
+            'id' => $taskList->getId(),
+        ]);
     }
 
     /**

@@ -12,6 +12,15 @@
     <body>
         {% include 'main_navigation.html.twig' %}
         <div class="container">
+            {% for type, messages in app.session.flashBag.all %}
+                {% for message in messages %}
+                    <div class="alert alert-dismissible alert-{{ type }}">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{ message|trans }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+
             {% block body %}{% endblock %}
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>

@@ -1,21 +1,52 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Task edit</h1>
-
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('task_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    {{ form_start(edit_form, { 'attr': {'class': 'form-horizontal', 'novalidate': 'novalidate'}}) }}
+    <fieldset>
+        <legend>{{ 'form.task.legend.edit'|trans }}</legend>
+        <div class="form-group">
+            <div class="col-sm-12 text-danger">{{ form_errors(edit_form.title) }}</div>
+            <label class="col-lg-2 control-label">{{ form_label(edit_form.title) }}</label>
+            <div class="col-lg-10">
+                {{ form_widget(edit_form.title, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="col-sm-12 text-danger">{{ form_errors(edit_form.content) }}</div>
+            <label class="col-lg-2 control-label">{{ form_label(edit_form.content) }}</label>
+            <div class="col-lg-10">
+                {{ form_widget(edit_form.content, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="col-sm-12 text-danger">{{ form_errors(edit_form.priority) }}</div>
+            <label class="col-lg-2 control-label">{{ form_label(edit_form.priority) }}</label>
+            <div class="col-lg-10">
+                {{ form_widget(edit_form.priority, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="col-sm-12 text-danger">{{ form_errors(edit_form.dueDate) }}</div>
+            <label class="col-lg-2 control-label">{{ form_label(edit_form.dueDate) }}</label>
+            <div class="col-lg-10">
+                {{ form_widget(edit_form.dueDate, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="col-sm-12 text-danger">{{ form_errors(edit_form.list) }}</div>
+            <label class="col-lg-2 control-label">{{ form_label(edit_form.list) }}</label>
+            <div class="col-lg-10">
+                {{ form_widget(edit_form.list, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-lg-10 col-lg-offset-2">
+                <table>
+                    <tr>
+                        <td>
+                            <button type="submit" class="btn btn-primary">{{ 'action.update'|trans }}</button>
+                            {{ form_end(edit_form) }}
+                        </td>
+                        <td>
+                            {{ form_start(delete_form) }}
+                            <button type="submit" class="btn btn-danger">{{ 'action.delete'|trans }}</button>
+                            {{ form_end(delete_form) }}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </fieldset>
 {% endblock %}

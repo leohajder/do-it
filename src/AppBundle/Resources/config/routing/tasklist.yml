@@ -1,8 +1,3 @@
-list_index:
-    path:     /
-    defaults: { _controller: "AppBundle:TaskList:index" }
-    methods:  GET
-
 list_show:
     path:     /{id}/show
     defaults: { _controller: "AppBundle:TaskList:show" }

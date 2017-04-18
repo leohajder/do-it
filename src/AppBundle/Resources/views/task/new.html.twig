@@ -1,16 +1,41 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Task creation</h1>
-
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+    {{ form_start(form, { 'attr': {'class': 'form-horizontal', 'novalidate': 'novalidate'}}) }}
+    <fieldset>
+        <legend>{{ 'form.task.legend.new'|trans }}</legend>
+        <div class="form-group">
+            <div class="col-sm-12 text-danger">{{ form_errors(form.title) }}</div>
+            <label class="col-lg-2 control-label">{{ form_label(form.title) }}</label>
+            <div class="col-lg-10">
+                {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="col-sm-12 text-danger">{{ form_errors(form.content) }}</div>
+            <label class="col-lg-2 control-label">{{ form_label(form.content) }}</label>
+            <div class="col-lg-10">
+                {{ form_widget(form.content, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="col-sm-12 text-danger">{{ form_errors(form.priority) }}</div>
+            <label class="col-lg-2 control-label">{{ form_label(form.priority) }}</label>
+            <div class="col-lg-10">
+                {{ form_widget(form.priority, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="col-sm-12 text-danger">{{ form_errors(form.dueDate) }}</div>
+            <label class="col-lg-2 control-label">{{ form_label(form.dueDate) }}</label>
+            <div class="col-lg-10">
+                {{ form_widget(form.dueDate, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="col-sm-12 text-danger">{{ form_errors(form.list) }}</div>
+            <label class="col-lg-2 control-label">{{ form_label(form.list) }}</label>
+            <div class="col-lg-10">
+                {{ form_widget(form.list, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-lg-10 col-lg-offset-2">
+                <button type="submit" class="btn btn-primary">{{ 'action.create'|trans }}</button>
+            </div>
+        </div>
+    </fieldset>
     {{ form_end(form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('task_index') }}">Back to the list</a>
-        </li>
-    </ul>
 {% endblock %}

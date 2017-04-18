@@ -1,21 +1,32 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Tasklist edit</h1>
-
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('list_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    {{ form_start(edit_form, { 'attr': {'class': 'form-horizontal', 'novalidate': 'novalidate'}}) }}
+    <fieldset>
+        <legend>{{ 'form.task_list.legend.edit'|trans }}</legend>
+        <div class="form-group">
+            <div class="col-sm-12 text-danger">{{ form_errors(edit_form.name) }}</div>
+            <label class="col-lg-2 control-label">{{ form_label(edit_form.name) }}</label>
+            <div class="col-lg-10">
+                {{ form_widget(edit_form.name, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-lg-10 col-lg-offset-2">
+                <table>
+                    <tr>
+                        <td>
+                            <button type="submit" class="btn btn-primary">{{ 'action.update'|trans }}</button>
+                            {{ form_end(edit_form) }}
+                        </td>
+                        <td>
+                            {{ form_start(delete_form) }}
+                            <button type="submit" class="btn btn-danger">{{ 'action.delete'|trans }}</button>
+                            {{ form_end(delete_form) }}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </fieldset>
 {% endblock %}

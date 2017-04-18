@@ -2,7 +2,6 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\UserInterface;
 use AppBundle\Form\TaskListType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\FormInterface;
@@ -55,6 +54,8 @@ class TaskListController extends Controller
             $em->persist($taskList);
             $em->flush();
 
+            $this->addFlash('success', 'flash.task_list.create.success');
+
             return $this->redirectToRoute('list_show', [
                 'id' => $taskList->getId(),
                 ]);
@@ -100,6 +101,8 @@ class TaskListController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash('success', 'flash.task_list.update.success');
+
             return $this->redirectToRoute('list_show', [
                 'id' => $taskList->getId(),
             ]);
@@ -129,9 +132,11 @@ class TaskListController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($taskList);
             $em->flush();
+
+            $this->addFlash('success', 'flash.task_list.delete.success');
         }
 
-        return $this->redirectToRoute('list_index');
+        return $this->redirectToRoute('app_index');
     }
 
     /**
