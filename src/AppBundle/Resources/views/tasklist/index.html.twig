@@ -6,7 +6,6 @@
     <table>
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Name</th>
                 <th>Created</th>
                 <th>Actions</th>
@@ -15,7 +14,6 @@
         <tbody>
         {% for taskList in taskLists %}
             <tr>
-                <td><a href="{{ path('list_show', { 'id': taskList.id }) }}">{{ taskList.id }}</a></td>
                 <td>{{ taskList.name }}</td>
                 <td>{% if taskList.created %}{{ taskList.created|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
