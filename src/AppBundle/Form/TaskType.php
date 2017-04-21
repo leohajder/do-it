@@ -7,6 +7,7 @@ use AppBundle\Entity\UserInterface;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -78,8 +79,10 @@ class TaskType extends AbstractType
                     new NotBlank(),
                 ],
             ])
-            ->add('priority', TextType::class, [
+            ->add('priority', ChoiceType::class, [
                 'label'       => 'form.task.priority',
+                'choices'     => $options['priorities'],
+//                'choice_label' => function ($key, $value) { return $key; },
                 'required'    => false,
             ])
             ->add('dueDate', DateType::class, [
@@ -122,6 +125,18 @@ class TaskType extends AbstractType
             'user' => $this->getCurrentUser(),
         ]);
     }
+
+    /**
+     * @return array
+     */
+    private function getPriorityChoices()
+    {
+        return [
+            'form.task.priority_choice.1' => 1,
+            'form.task.priority_choice.2' => 2,
+            'form.task.priority_choice.3' => 3,
+        ];
+    }
     
     /**
      * {@inheritdoc}
@@ -131,6 +146,7 @@ class TaskType extends AbstractType
         $resolver->setDefaults([
             'data_class' => $this->dataClass,
             'taskLists'  => $this->getListsByCurrentUser(),
+            'priorities' => $this->getPriorityChoices(),
         ]);
     }
 

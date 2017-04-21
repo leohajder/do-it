@@ -20,7 +20,7 @@
 
     <i class="fa fa-list-alt"></i> <a href="{{ path('list_show', { 'id': task.list.id }) }}">{{ task.list.name }}</a>
 
-    {% if task.priority %}<i class="fa fa-exclamation-triangle"></i> {{ task.priority }}{% endif %}
+    {% if task.priority %}<i class="fa fa-exclamation-triangle"></i> {{ ('form.task.priority_choice.' ~ task.priority)|trans }}{% endif %}
 
     {% if task.dueDate %}<i class="fa fa-calendar"></i> {{ task.dueDate|date('Y-m-d') }}{% endif %}
 

@@ -49,7 +49,7 @@ interface TaskInterface
     /**
      * Set priority
      *
-     * @param string $priority
+     * @param int $priority
      *
      * @return TaskInterface
      */
@@ -58,7 +58,7 @@ interface TaskInterface
     /**
      * Get priority
      *
-     * @return string
+     * @return int
      */
     public function getPriority();
 

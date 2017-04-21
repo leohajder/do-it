@@ -10,6 +10,10 @@ form:
         title: 'Title'
         content: 'Content'
         priority: 'Priority'
+        priority_choice:
+            1: 'low'
+            2: 'normal'
+            3: 'high'
         due_date: 'Due date'
         list: 'List'
         legend:

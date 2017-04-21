@@ -14,8 +14,8 @@ AppBundle\Entity\Task:
         content:
             type: text
         priority:
-            type: string
-            length: 255
+            type: integer
+            length: 1
             nullable: true
         dueDate:
             type: datetime

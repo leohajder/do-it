@@ -23,6 +23,11 @@ class Task implements TaskInterface
     private $content;
 
     /**
+     * @var array $priorityChoices
+     */
+    private $priorityChoices;
+
+    /**
      * @var string
      */
     private $priority;
@@ -109,7 +114,7 @@ class Task implements TaskInterface
     /**
      * Set priority
      *
-     * @param string $priority
+     * @param int $priority
      *
      * @return TaskInterface
      */
@@ -123,7 +128,7 @@ class Task implements TaskInterface
     /**
      * Get priority
      *
-     * @return string
+     * @return int
      */
     public function getPriority()
     {
