@@ -37,3 +37,15 @@ services:
             - '@security.token_storage'
         tags:
             - { name: form.type }
+
+    app.voter.task_list:
+        class: '%app.voter.task_list.class%'
+        tags:
+            - { name: security.voter }
+        public: false
+
+    app.voter.task:
+            class: '%app.voter.task.class%'
+            tags:
+                - { name: security.voter }
+            public: false

@@ -76,6 +76,8 @@ class TaskListController extends Controller
      */
     public function showAction(TaskList $taskList)
     {
+        $this->denyAccessUnlessGranted('VIEW', $taskList);
+
         $deleteForm = $this->createDeleteForm($taskList);
 
         return $this->render('AppBundle:tasklist:show.html.twig', [
@@ -94,6 +96,8 @@ class TaskListController extends Controller
      */
     public function editAction(Request $request, TaskList $taskList)
     {
+        $this->denyAccessUnlessGranted('EDIT', $taskList);
+
         $deleteForm = $this->createDeleteForm($taskList);
         $editForm = $this->createForm(TaskListType::class, $taskList);
         $editForm->handleRequest($request);
@@ -125,6 +129,8 @@ class TaskListController extends Controller
      */
     public function deleteAction(Request $request, TaskList $taskList)
     {
+        $this->denyAccessUnlessGranted('DELETE', $taskList);
+        
         $form = $this->createDeleteForm($taskList);
         $form->handleRequest($request);
 

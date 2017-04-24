@@ -73,6 +73,8 @@ class TaskController extends Controller
      */
     public function showAction(Task $task)
     {
+        $this->denyAccessUnlessGranted('VIEW', $task);
+
         $deleteForm = $this->createDeleteForm($task);
 
         return $this->render('AppBundle:task:show.html.twig', [
@@ -91,6 +93,8 @@ class TaskController extends Controller
      */
     public function editAction(Request $request, Task $task)
     {
+        $this->denyAccessUnlessGranted('EDIT', $task);
+
         $deleteForm = $this->createDeleteForm($task);
         $editForm = $this->createForm(TaskType::class, $task);
         $editForm->handleRequest($request);
@@ -122,6 +126,12 @@ class TaskController extends Controller
      */
     public function deleteAction(Request $request, Task $task)
     {
+        $this->denyAccessUnlessGranted('DELETE', $task);
+
+        if (false === ($this->getUser() === $task->getList()->getUser())) {
+            return $this->redirectToRoute('app_index');
+        }
+        
         /** @var TaskListInterface $taskList */
         $taskList = $task->getList();
 

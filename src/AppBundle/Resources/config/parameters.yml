@@ -5,3 +5,5 @@ parameters:
     app.repository.class: Doctrine\ORM\EntityRepository
     app.form.type.task_list.class: AppBundle\Form\TaskListType
     app.form.type.task.class: AppBundle\Form\TaskType
+    app.voter.task_list.class: AppBundle\Security\TaskListVoter
+    app.voter.task.class: AppBundle\Security\TaskVoter
