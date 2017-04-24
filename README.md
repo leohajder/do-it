@@ -1,10 +1,15 @@
 # DO*it*
 
-A Symfony todo application. Work in progress.
+A Symfony todo application.
 
-## Bundles
+## How does it work?
 
-* [FOSUserBundle](https://github.com/FriendsOfSymfony/FOSUserBundle)
+Users can register, login and manage lists of tasks. 
+The application features some advanced Symfony setup, 
+config, factory design pattern, form type classes, 
+security access control and voters, translations, styling, etc. 
+Some elements were generated automatically via Symphony's built-in console, 
+such as entity classes and CRUD controller actions. 
 
 ## Resources
 
@@ -12,6 +17,10 @@ A Symfony todo application. Work in progress.
 * [Bootswatch](https://bootswatch.com/)
 * [FontAwesome](http://fontawesome.io/)
 * [jQuery](https://jquery.com/)
+
+## 3rd party bundles
+
+* [FOSUserBundle](https://github.com/FriendsOfSymfony/FOSUserBundle)
 
 ## Installation
 
