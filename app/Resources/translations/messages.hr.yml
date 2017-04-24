@@ -1,0 +1,5 @@
+main_navigation:
+    register: 'Registracija'
+    profile: 'Profil'
+    login: 'Prijava'
+    logout: 'Odjava'

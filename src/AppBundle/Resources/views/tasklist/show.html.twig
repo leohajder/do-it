@@ -34,7 +34,7 @@
                 {% for task in taskList.tasks %}
                     <tr>
                         <td>{{ task.title }}</td>
-                        <td>{{ task.priority }}</td>
+                        <td>{% if task.priority %}{{ ('form.task.priority_choice.' ~ task.priority)|trans }}{% endif %}</td>
                         <td>
                             {% if task.dueDate %}{{ task.dueDate|date('Y-m-d') }}{% endif %}
                         </td>

@@ -1,0 +1,46 @@
+form:
+    task_list:
+        name: 'Ime'
+        legend:
+            new: 'Nova lista'
+            edit: 'Uredi listu'
+            delete: 'Izbriši listu'
+            lists: 'Liste'
+    task:
+        title: 'Naslov'
+        content: 'Sadržaj'
+        priority: 'Prioritet'
+        priority_choice:
+            1: 'nizak'
+            2: 'normalan'
+            3: 'visok'
+        due_date: 'Rok'
+        list: 'Lista'
+        legend:
+            new: 'Novi zadatak'
+            edit: 'Uredi zadatak'
+            delete: 'Izbriši zadatak'
+            tasks: 'Zadaci'
+
+action:
+    create: 'Napravi'
+    edit: 'Uredi'
+    update: 'Spremi'
+    delete: 'Izbriši'
+    show: 'Prikaži'
+
+flash:
+    task_list:
+        create:
+            success: 'Lista uspješno kreirana.'
+        update:
+            success: 'Lista uspješno spremljena.'
+        delete:
+            success: 'Lista uspješno izbrisana.'
+    task:
+        create:
+            success: 'Zadatak uspješno kreiran.'
+        update:
+            success: 'Zadatak uspješno spremljen.'
+        delete:
+            success: 'Zadatak uspješno izbrisan.'
