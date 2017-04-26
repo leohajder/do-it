@@ -1,3 +1,5 @@
+{%  set now = date('now') %}
+
 {% extends 'base.html.twig' %}
 
 {% block body %}
@@ -33,10 +35,25 @@
             <tbody>
                 {% for task in taskList.tasks %}
                     <tr>
-                        <td>{{ task.title }}</td>
-                        <td>{% if task.priority %}{{ ('form.task.priority_choice.' ~ task.priority)|trans }}{% endif %}</td>
                         <td>
-                            {% if task.dueDate %}{{ task.dueDate|date('Y-m-d') }}{% endif %}
+                            {{ task.title }}
+                            {% if task.dueDate %}
+                                {% if task.completed is null %}
+                                    {% if now.diff(date(task.dueDate)).days == 0 %}
+                                        <i class="text-success fa fa-exclamation"></i>
+                                    {% elseif now > task.dueDate %}
+                                        <i class="text-danger fa fa-exclamation"></i>
+                                    {% elseif now.diff(date(task.dueDate)).days <= 7 and now < task.dueDate %}
+                                        <i class="text-warning fa fa-exclamation"></i>
+                                    {% endif %}
+                                {% endif %}
+                            {% endif %}
+                            {% if task.completed %}
+                                <i class="text-success fa fa-check-square"></i>
+                            {% endif %}
+                        </td>
+                        <td>{% if task.priority %}{{ ('form.task.priority_choice.' ~ task.priority)|trans }}{% endif %}</td>
+                        <td>{% if task.dueDate %}{{ task.dueDate|date('Y-m-d') }}{% endif %}
                         </td>
                         <td>
                             <a href="{{ path('task_show', { 'id': task.id }) }}" class="btn btn-link text-info">{{ 'action.show'|trans }}</a>

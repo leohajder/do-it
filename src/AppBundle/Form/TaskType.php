@@ -2,6 +2,7 @@
 
 namespace AppBundle\Form;
 
+use AppBundle\Entity\TaskInterface;
 use AppBundle\Entity\TaskListInterface;
 use AppBundle\Entity\UserInterface;
 use Doctrine\ORM\EntityRepository;
@@ -11,7 +12,10 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Validator\Constraints\DateTime;
@@ -82,7 +86,6 @@ class TaskType extends AbstractType
             ->add('priority', ChoiceType::class, [
                 'label'       => 'form.task.priority',
                 'choices'     => $options['priorities'],
-//                'choice_label' => function ($key, $value) { return $key; },
                 'required'    => false,
             ])
             ->add('dueDate', DateType::class, [
@@ -104,8 +107,23 @@ class TaskType extends AbstractType
                   new NotBlank(),
                 ],
             ])
+            ->add('completed', CheckboxType::class, [
+                'label'       => 'form.task.completed',
+                'required'    => false,
+            ])
         ;
 
+        $builder
+            ->addEventListener(FormEvents::PRE_SET_DATA, function(FormEvent $event) {
+                $data = $event->getData();
+                $data->getCompleted() ? $data->setCompleted(true) : $data->setCompleted(null);
+            })
+            ->addEventListener(FormEvents::SUBMIT, function(FormEvent $event) {
+                /** @var TaskInterface $data */
+                $data = $event->getData();
+                $data->getCompleted() ? $data->setCompleted(new \DateTime()) : $data->setCompleted(null);
+            })
+        ;
     }
 
     /**

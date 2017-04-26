@@ -15,6 +15,7 @@ form:
             2: 'normalan'
             3: 'visok'
         due_date: 'Rok'
+        completed: 'Završeno?'
         list: 'Lista'
         legend:
             new: 'Novi zadatak'
