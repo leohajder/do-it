@@ -6,7 +6,7 @@ A Symfony todo application.
 
 Users can register, login and manage lists of tasks. 
 The application features some advanced Symfony setup, 
-config, factory design pattern, form type classes, 
+config, services, factory design pattern, form type classes, 
 security access control and voters, translations, styling, etc. 
 Some elements were generated automatically via Symphony's built-in console, 
 such as entity classes and CRUD controller actions. 

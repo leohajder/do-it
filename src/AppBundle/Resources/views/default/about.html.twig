@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1 class="page-header"><strong>DO</strong><em>it</em></h1>
+
+    {{ 'contents.about.lead'|trans|replace({
+        '%GitHub%': '<a href="https://github.com/leohajder/do-it" target="_blank">GitHub</a>'
+    })|raw }}
+
+<h2>{{ 'contents.about.how_does_it_work.title'|trans }}</h2>
+
+    {{ 'contents.about.how_does_it_work.content'|trans }}
+
+<h2>{{ 'contents.about.resources'|trans }}</h2>
+
+    <ul>
+        <li><a href="http://getbootstrap.com/" target="_blank">Bootstrap</a></li>
+        <li><a href="https://bootswatch.com/" target="_blank">Bootswatch</a></li>
+        <li><a href="http://fontawesome.io/" target="_blank">FontAwesome</a></li>
+        <li><a href="https://jquery.com/" target="_blank">jQuery</a></li>
+    </ul>
+
+<h2>{{ 'contents.about.bundles'|trans }}</h2>
+
+    <ul>
+        <li><a href="https://github.com/FriendsOfSymfony/FOSUserBundle" target="_blank">FOSUserBundle</a></li>
+    </ul>
+
+<h2>{{ 'contents.about.installation.title'|trans }}</h2>
+
+    {{ 'contents.about.installation.content'|trans|replace({
+        '%fos_user_commands%': '<a href="http://symfony.com/doc/current/bundles/FOSUserBundle/command_line_tools.html" target="_blank">' ~ ('contents.about.installation.here'|trans) ~'</a>'
+    })|raw }}
+
+<h3>{{ 'contents.about.about_me'|trans }}</h3>
+
+    <a href="https://leohajder.github.io" target="_blank"><span class="label label-primary"><i class="fa fa-globe fa-lg" aria-hidden="true"><span class="hidden-xs"> web</span></i></span></a>
+    <a href="mailto:leohajder@gmail.com" target="_blank"><span class="label label-primary"><i class="fa fa-envelope-o fa-lg" aria-hidden="true"><span class="hidden-xs"> email</span></i></span></a>
+    <a href="https://github.com/leohajder" target="_blank"><span class="label label-primary"><i class="fa fa-github fa-lg" aria-hidden="true"><span class="hidden-xs"> github</span></i></span></a>
+    <a href="https://www.freecodecamp.com/leohajder" target="_blank"><span class="label label-primary"><i class="fa fa-free-code-camp fa-lg" aria-hidden="true"><span class="hidden-xs"> freecodecamp</span></i></span></a>
+    <a href="http://codepen.io/leohajder/" target="_blank"><span class="label label-primary"><i class="fa fa-codepen fa-lg" aria-hidden="true"><span class="hidden-xs"> codepen</span></i></span></a>
+    <a href="http://www.linkedin.com/in/leohajder" target="_blank"><span class="label label-primary"><i class="fa fa-linkedin fa-lg" aria-hidden="true"><span class="hidden-xs"> linkedin</span></i></span></a>
+    <a href="https://www.facebook.com/leohajder" target="_blank"><span class="label label-primary"><i class="fa fa-facebook fa-lg" aria-hidden="true"><span class="hidden-xs"> facebook</span></i></span></a>
+    <a href="https://www.youtube.com/c/LeoHajder" target="_blank"><span class="label label-primary"><i class="fa fa-youtube-play fa-lg" aria-hidden="true"><span class="hidden-xs"> youtube</span></i></span></a>
+    <a href="http://www.last.fm/user/leohajder" target="_blank"><span class="label label-primary"><i class="fa fa-lastfm fa-lg" aria-hidden="true"><span class="hidden-xs"> last.fm</span></i></span></a>
+
+<br><br>
+
+{% endblock %}

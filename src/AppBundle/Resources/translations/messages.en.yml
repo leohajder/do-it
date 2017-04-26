@@ -45,3 +45,23 @@ flash:
             success: 'Your task was updated successfully.'
         delete:
             success: 'Your task was deleted successfully.'
+
+contents:
+    about:
+        lead: "A Symfony todo application. View on %GitHub%."
+        how_does_it_work:
+            title: 'How does it work?'
+            content: "Users can register, login and manage lists of tasks. The application features some advanced Symfony setup, config, services, factory design pattern, form type classes, security access control and voters, translations, styling, etc. Some elements were generated automatically via Symphony's built-in console, such as entity classes and CRUD controller actions."
+        resources: "Resources"
+        bundles: "3rd party bundles"
+        installation:
+            title: "Installation"
+            content: "<code>git clone https://github.com/leohajder/do-it.git</code> to clone the repository<br>
+                      <code>cd do-it</code><br>
+                      <code>composer install</code> and provide the database parameters when prompted<br>
+                      <code>php bin/console doctrine:database:create</code>  to create the database<br>
+                      <code>php bin/console doctrine:schema:update --force</code>  to update the schema<br>
+                      <code>php bin/console fos:user:create &lt;username&gt;</code>  to create a user, read more %fos_user_commands%<br>
+                      <code>php bin/console server:start</code> and go to <code>http://127.0.0.1:8000</code> to view the application"
+            here: "here"
+        about_me: "About me"

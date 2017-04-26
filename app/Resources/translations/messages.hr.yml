@@ -3,3 +3,4 @@ main_navigation:
     profile: 'Profil'
     login: 'Prijava'
     logout: 'Odjava'
+    about: 'O projektu'
