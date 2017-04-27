@@ -5,8 +5,5 @@ parameters:
     app.repository.class: Doctrine\ORM\EntityRepository
     app.form.type.task_list.class: AppBundle\Form\Type\TaskListType
     app.form.type.task.class: AppBundle\Form\Type\TaskType
-    app.form.extension.fos_user_profile.class: AppBundle\Form\Extension\ProfileFormTypeExtension
     app.voter.task_list.class: AppBundle\Security\TaskListVoter
     app.voter.task.class: AppBundle\Security\TaskVoter
-    app.listener.locale.class: AppBundle\EventListener\LocaleListener
-    app.listener.user_locale.class: AppBundle\EventListener\UserLocaleListener

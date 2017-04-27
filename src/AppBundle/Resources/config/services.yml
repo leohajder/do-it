@@ -38,11 +38,6 @@ services:
         tags:
             - { name: form.type }
 
-    app.form.extension.fos_user_profile:
-        class: '%app.form.extension.fos_user_profile.class%'
-        tags:
-            - { name: form.type_extension, extended_type: FOS\UserBundle\Form\Type\ProfileFormType }
-
     app.voter.task_list:
         class: '%app.voter.task_list.class%'
         tags:
@@ -54,16 +49,3 @@ services:
         tags:
             - { name: security.voter }
         public: false
-
-    app.listener.locale:
-        class: '%app.listener.locale.class%'
-        arguments: ['%kernel.default_locale%']
-        tags:
-            - { name: kernel.event_subscriber }
-
-    app.listener.user_locale:
-        class: '%app.listener.user_locale.class%'
-        arguments: ['@session']
-        tags:
-            - { name: kernel.event_listener, event: security.interactive_login, method: onInteractiveLogin }
-            - { name: kernel.event_listener, event: fos_user.profile.edit.success, method: onUserUpdate }

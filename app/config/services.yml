@@ -1,9 +1,26 @@
 # Learn more about services, parameters and containers at
 # http://symfony.com/doc/current/service_container.html
 parameters:
-#    parameter_name: value
+    app.entity.user.class: AppBundle\Entity\User
+    app.form.extension.fos_user_profile.class: AppBundle\Form\Extension\ProfileFormTypeExtension
+    app.listener.locale.class: AppBundle\EventListener\LocaleListener
+    app.listener.user_locale.class: AppBundle\EventListener\UserLocaleListener
 
 services:
-#    service_name:
-#        class: AppBundle\Directory\ClassName
-#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    app.form.extension.fos_user_profile:
+        class: '%app.form.extension.fos_user_profile.class%'
+        tags:
+            - { name: form.type_extension, extended_type: FOS\UserBundle\Form\Type\ProfileFormType }
+
+    app.listener.locale:
+        class: '%app.listener.locale.class%'
+        arguments: ['%kernel.default_locale%']
+        tags:
+            - { name: kernel.event_subscriber }
+
+    app.listener.user_locale:
+        class: '%app.listener.user_locale.class%'
+        arguments: ['@session']
+        tags:
+            - { name: kernel.event_listener, event: security.interactive_login, method: onInteractiveLogin }
+            - { name: kernel.event_listener, event: fos_user.profile.edit.success, method: onUserUpdate }
