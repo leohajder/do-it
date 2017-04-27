@@ -23,7 +23,7 @@ class User extends BaseUser implements UserInterface
     /**
      * @var string
      */
-    protected $locale;
+    protected $locale = 'en';
 
     /**
      * Constructor
