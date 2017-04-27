@@ -19,6 +19,11 @@
             <div class="col-lg-10">
                 {{ form_widget(form.current_password, {'attr': {'class': 'form-control'}}) }}
             </div>
+            <div class="col-sm-12 text-danger">{{ form_errors(form.locale) }}</div>
+            <label class="col-lg-2 control-label">{{ form_label(form.locale) }}</label>
+            <div class="col-lg-10">
+                {{ form_widget(form.locale, {'attr': {'class': 'form-control'}}) }}
+            </div>
         </div>
         <div class="form-group">
             <div class="col-lg-10 col-lg-offset-2">

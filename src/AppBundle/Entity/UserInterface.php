@@ -19,6 +19,22 @@ interface UserInterface extends BaseUserInterface
     public function getId();
 
     /**
+     * Get locale
+     *
+     * @return string
+     */
+    public function getLocale();
+
+    /**
+     * Set locale
+     *
+     * @param string $locale
+     *
+     * @return UserInterface
+     */
+    public function setLocale($locale);
+
+    /**
      * @param TaskListInterface $list
      *
      * @return UserInterface

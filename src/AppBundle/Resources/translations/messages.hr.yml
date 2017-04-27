@@ -53,7 +53,7 @@ contents:
             title: 'Kako radi?'
             content: "Korisnici se mogu registrirati, prijaviti i upravljati listama zadataka.
                       Aplikacija pokazuje neke napredne Symfony tehnike, konfiguraciju, servise, factory design pattern,
-                      forme kao klase, sigurnosne postavke i votere, prijevode, stilove, itd.
+                      forme i ekstenzije, sigurnosne postavke i votere, prijevode, stilove, itd.
                       Neki elementi su generirani pomoću Symfony konzole, kao npr. entiteti i kontroleri za CRUD akcije."
         resources: "Vanjski resursi"
         bundles: "Vanjski bundle-ovi"

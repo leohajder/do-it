@@ -1,2 +1,6 @@
 layout:
     edit_profile: 'Edit profile'
+
+profile:
+    show:
+        locale: 'Locale'

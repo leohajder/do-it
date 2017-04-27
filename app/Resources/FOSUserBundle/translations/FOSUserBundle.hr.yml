@@ -1,2 +1,6 @@
 layout:
     edit_profile: 'Uredi profil'
+
+profile:
+    show:
+        locale: 'Jezik'

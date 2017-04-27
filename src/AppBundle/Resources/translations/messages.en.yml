@@ -51,7 +51,11 @@ contents:
         lead: "A Symfony todo application. View on %GitHub%."
         how_does_it_work:
             title: 'How does it work?'
-            content: "Users can register, login and manage lists of tasks. The application features some advanced Symfony setup, config, services, factory design pattern, form type classes, security access control and voters, translations, styling, etc. Some elements were generated automatically via Symphony's built-in console, such as entity classes and CRUD controller actions."
+            content: "Users can register, login and manage lists of tasks. The application features some advanced
+                      Symfony setup, config, services, factory design pattern, form types and extensions,
+                      security access control and voters, translations, styling, etc.
+                      Some elements were generated automatically via Symphony's built-in console,
+                      such as entity classes and CRUD controller actions."
         resources: "Resources"
         bundles: "3rd party bundles"
         installation:

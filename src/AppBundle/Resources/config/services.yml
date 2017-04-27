@@ -38,6 +38,11 @@ services:
         tags:
             - { name: form.type }
 
+    app.form.extension.fos_user_profile:
+            class: '%app.form.extension.fos_user_profile.class%'
+            tags:
+                - { name: form.type_extension, extended_type: FOS\UserBundle\Form\Type\ProfileFormType }
+
     app.voter.task_list:
         class: '%app.voter.task_list.class%'
         tags:
@@ -45,7 +50,7 @@ services:
         public: false
 
     app.voter.task:
-            class: '%app.voter.task.class%'
-            tags:
-                - { name: security.voter }
-            public: false
+        class: '%app.voter.task.class%'
+        tags:
+            - { name: security.voter }
+        public: false

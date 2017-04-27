@@ -21,6 +21,11 @@ class User extends BaseUser implements UserInterface
     protected $lists;
 
     /**
+     * @var string
+     */
+    protected $locale;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -37,6 +42,30 @@ class User extends BaseUser implements UserInterface
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get locale
+     *
+     * @return string
+     */
+    public function getLocale()
+    {
+        return $this->locale;
+    }
+
+    /**
+     * Set locale
+     *
+     * @param string $locale
+     *
+     * @return UserInterface
+     */
+    public function setLocale($locale)
+    {
+        $this->locale = $locale;
+
+        return $this;
     }
 
     /**

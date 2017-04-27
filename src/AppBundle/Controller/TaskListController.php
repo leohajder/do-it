@@ -2,7 +2,7 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Form\TaskListType;
+use AppBundle\Form\Type\TaskListType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,7 +20,7 @@ class TaskListController extends Controller
      *
      * @return Response
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         /** @var TaskListInterface $taskLists */
         $taskLists = $this->get('app.repository.task_list')->findBy([
