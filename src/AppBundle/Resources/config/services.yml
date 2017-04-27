@@ -54,3 +54,16 @@ services:
         tags:
             - { name: security.voter }
         public: false
+
+    app.listener.locale:
+        class: '%app.listener.locale.class%'
+        arguments: ['%kernel.default_locale%']
+        tags:
+            - { name: kernel.event_subscriber }
+
+    app.listener.user_locale:
+        class: '%app.listener.user_locale.class%'
+        arguments: ['@session']
+        tags:
+            - { name: kernel.event_listener, event: security.interactive_login, method: onInteractiveLogin }
+            - { name: kernel.event_listener, event: fos_user.profile.edit.success, method: onUserUpdate }

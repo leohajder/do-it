@@ -8,3 +8,5 @@ parameters:
     app.form.extension.fos_user_profile.class: AppBundle\Form\Extension\ProfileFormTypeExtension
     app.voter.task_list.class: AppBundle\Security\TaskListVoter
     app.voter.task.class: AppBundle\Security\TaskVoter
+    app.listener.locale.class: AppBundle\EventListener\LocaleListener
+    app.listener.user_locale.class: AppBundle\EventListener\UserLocaleListener
