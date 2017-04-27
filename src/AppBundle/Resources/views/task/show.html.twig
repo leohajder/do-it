@@ -33,8 +33,6 @@
         </tr>
     </table>
 
-    <br>
-
     <i class="fa fa-list-alt"></i> <a href="{{ path('list_show', { 'id': task.list.id }) }}">{{ task.list.name }}</a>
 
     {% if task.priority %}<i class="fa fa-exclamation-triangle"></i> {{ ('form.task.priority_choice.' ~ task.priority)|trans }}{% endif %}
@@ -43,7 +41,5 @@
 
     {% if task.completed %}<i class="fa fa-check-square"></i> {{ task.completed|date('Y-m-d') }}{% endif %}
 
-    <br><br>
-
-    <div class="container">{{ task.content }}</div>
+    <div class="container task-content">{{ task.content }}</div>
 {% endblock %}

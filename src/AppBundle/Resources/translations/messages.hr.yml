@@ -51,7 +51,10 @@ contents:
         lead: "Symfony todo applikacija. Link na %GitHub%."
         how_does_it_work:
             title: 'Kako radi?'
-            content: "Korisnici se mogu registrirati, prijaviti i upravljati listama zadataka. Aplikacija pokazuje neke napredne Symfony tehnike, konfiguraciju, servise, factory design pattern, forme kao klase, sigurnosne postavke i votere, prijevode, stilove, itd. Neki elementi su generirani pomoću Symfony konzole, kao npr. entiteti i kontroleri za CRUD akcije."
+            content: "Korisnici se mogu registrirati, prijaviti i upravljati listama zadataka.
+                      Aplikacija pokazuje neke napredne Symfony tehnike, konfiguraciju, servise, factory design pattern,
+                      forme kao klase, sigurnosne postavke i votere, prijevode, stilove, itd.
+                      Neki elementi su generirani pomoću Symfony konzole, kao npr. entiteti i kontroleri za CRUD akcije."
         resources: "Vanjski resursi"
         bundles: "Vanjski bundle-ovi"
         installation:
@@ -63,5 +66,5 @@ contents:
                       <code>php bin/console doctrine:schema:update --force</code>  za kreiranje tablica u bazi<br>
                       <code>php bin/console fos:user:create &lt;username&gt;</code>  za kreiranje korisnika, pročitajte više %fos_user_commands%<br>
                       <code>php bin/console server:start</code> i otvorite <code>http://127.0.0.1:8000</code> za pregled aplikacije"
-            here: "tu"
+            here: "ovdje"
         about_me: "O meni"
