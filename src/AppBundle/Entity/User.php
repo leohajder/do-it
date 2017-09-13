@@ -116,4 +116,3 @@ class User extends BaseUser implements UserInterface
         return $this->lists;
     }
 }
-

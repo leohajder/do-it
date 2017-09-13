@@ -102,7 +102,7 @@ class TaskController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            $this->addFlash('success','flash.task.update.success');
+            $this->addFlash('success', 'flash.task.update.success');
 
             return $this->redirectToRoute('task_show', [
                 'id' => $task->getId(),
@@ -143,7 +143,7 @@ class TaskController extends Controller
             $em->remove($task);
             $em->flush();
 
-            $this->addFlash('success','flash.task.delete.success');
+            $this->addFlash('success', 'flash.task.delete.success');
         }
 
         return $this->redirectToRoute('list_show', [

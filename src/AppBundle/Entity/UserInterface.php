@@ -5,7 +5,6 @@ namespace AppBundle\Entity;
 use FOS\UserBundle\Model\UserInterface as BaseUserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 
-
 /**
  * UserInterface
  */

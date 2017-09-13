@@ -30,7 +30,7 @@ class ProfileFormTypeExtension extends AbstractTypeExtension
                 'en',
                 'hr',
             ],
-            'choice_label'       => function($key, $value) {
+            'choice_label'       => function ($key, $value) {
                 return $key;
             },
             'constraints'        => [

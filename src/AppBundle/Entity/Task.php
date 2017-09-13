@@ -231,4 +231,3 @@ class Task implements TaskInterface
         return $this->list;
     }
 }
-

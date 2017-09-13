@@ -100,7 +100,7 @@ class TaskType extends AbstractType
                 'label'       => 'form.task.list',
                 'class'       => $this->taskListClass,
                 'choices'     => $options['taskLists'],
-                'choice_label' => function(TaskListInterface $taskList) {
+                'choice_label' => function (TaskListInterface $taskList) {
                     return $taskList->getName();
                 },
                 'constraints' => [
@@ -114,11 +114,11 @@ class TaskType extends AbstractType
         ;
 
         $builder
-            ->addEventListener(FormEvents::PRE_SET_DATA, function(FormEvent $event) {
+            ->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
                 $data = $event->getData();
                 $data->getCompleted() ? $data->setCompleted(true) : $data->setCompleted(null);
             })
-            ->addEventListener(FormEvents::SUBMIT, function(FormEvent $event) {
+            ->addEventListener(FormEvents::SUBMIT, function (FormEvent $event) {
                 /** @var TaskInterface $data */
                 $data = $event->getData();
                 $data->getCompleted() ? $data->setCompleted(new \DateTime()) : $data->setCompleted(null);
